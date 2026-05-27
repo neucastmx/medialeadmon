@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="assets/images/favicon.png" type="image/png" sizes="32x32" />
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/images/favicon.png" />
+
+  <!-- SEO -->
+  <title>Media Leadmon — Resultados que se miden</title>
+  <meta name="description" content="Agencia de performance digital. De ruido a claridad: convertimos intención en ventas reales con Meta Ads, Google Ads, TikTok, Branding, DOOH y Display." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Media Leadmon — Resultados que se miden" />
+  <meta property="og:description" content="Agencia de performance digital. Convertimos intención en ventas reales." />
+  <meta property="og:image"       content="assets/images/og-image.png" />
+  <meta property="og:image:secure_url" content="assets/images/og-image.png" />
+  <meta property="og:image:type"  content="image/png" />
+  <meta property="og:image:width" content="980" />
+  <meta property="og:image:height" content="980" />
+  <meta property="og:image:alt"   content="Media Leadmon" />
+  <meta name="twitter:card"       content="summary_large_image" />
+  <meta name="twitter:image"      content="assets/images/og-image.png" />
+
+  <!-- Bootstrap 5 -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Scroll to top on reload -->
+  <script>if (history.scrollRestoration) history.scrollRestoration = 'manual';</script>
+</head>
+<body>
+
+  <!-- Custom cursor (desktop) -->
+  <div id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scroll-top" aria-label="Volver al inicio">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/5215598043531?text=Hola%2C%20me%20interesa%20conocer%20sus%20servicios"
+     class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+     aria-label="Contactar por WhatsApp">
+    <span class="whatsapp-float__icon" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.74 5.476 2.031 7.785L0 32l8.422-2.008A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.207 22.604c-.343.965-2.002 1.842-2.732 1.96-.698.112-1.573.16-2.536-.16-.584-.193-1.333-.45-2.29-.882-4.03-1.737-6.658-5.826-6.862-6.094-.204-.268-1.665-2.214-1.665-4.224s1.054-2.997 1.428-3.41c.374-.413.816-.516 1.088-.516.272 0 .544.003.782.015.25.013.586-.095.917.7.343.82 1.164 2.83 1.266 3.035.102.204.17.443.034.714-.136.272-.204.443-.408.68-.204.238-.428.53-.611.713-.204.203-.416.422-.179.827.238.405 1.056 1.74 2.267 2.818 1.558 1.388 2.873 1.817 3.278 2.02.405.204.643.17.882-.102.238-.272 1.02-1.19 1.292-1.598.271-.409.543-.34.917-.204.374.136 2.374 1.12 2.779 1.323.405.204.676.306.777.476.102.17.102.986-.24 1.95z"/></svg>
+    </span>
+    <span class="whatsapp-float__label">Hablemos</span>
+  </a>
+
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
+  <header id="header" class="site-header" role="banner">
+    <nav class="navbar" aria-label="Navegación principal">
+
+      <a href="#inicio" class="nav__logo" aria-label="Media Leadmon — Inicio">
+        <img src="assets/images/logo-icon-yellow.png" alt="" class="nav__logo-icon" />
+        <img src="assets/images/logo-wordmark-black.png" alt="Media Leadmon" class="nav__logo-word" />
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#servicios"  class="nav__link">Servicios</a></li>
+        <li><a href="#resultados" class="nav__link">Resultados</a></li>
+        <li><a href="#proceso"    class="nav__link">Proceso</a></li>
+        <li><a href="#casos"      class="nav__link">Casos de éxito</a></li>
+        <li><a href="#equipo"     class="nav__link">Nuestro equipo</a></li>
+        <li><a href="#contacto"   class="nav__link">Contacto</a></li>
+      </ul>
+
+      <div class="nav__cta">
+        <a href="tel:5598043531" class="nav__phone" aria-label="Llamar al 55 98 04 35 31">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          55 98 04 35 31
+        </a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true">
+      <button class="mobile-menu__close" id="mobile-close" aria-label="Cerrar menú">✕</button>
+      <ul class="mobile-menu__links" role="list">
+        <li><a href="#inicio"     class="mobile-menu__link">Inicio</a></li>
+        <li><a href="#servicios"  class="mobile-menu__link">Servicios</a></li>
+        <li><a href="#resultados" class="mobile-menu__link">Resultados</a></li>
+        <li><a href="#proceso"    class="mobile-menu__link">Proceso</a></li>
+        <li><a href="#casos"      class="mobile-menu__link">Casos de éxito</a></li>
+        <li><a href="#equipo"     class="mobile-menu__link">Nuestro equipo</a></li>
+        <li><a href="#contacto"   class="mobile-menu__link">Contacto</a></li>
+      </ul>
+      <a href="tel:5598043531" class="mobile-menu__phone">55 98 04 35 31</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+    <section id="inicio" class="hero" aria-label="Hero principal">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__gradient" aria-hidden="true"></div>
+      <picture>
+        <source srcset="assets/images/lemon/img-lemon-2-mobile.png" media="(max-width: 767px)" />
+        <img src="assets/images/lemon/img-lemon-2.png"
+             srcset="assets/images/lemon/img-lemon-2-mobile.png 560w, assets/images/lemon/img-lemon-2.png 1080w"
+             sizes="(max-width: 767px) 390px, 38vw"
+             alt="" class="hero__lemon" aria-hidden="true" loading="eager" fetchpriority="high" />
+      </picture>
+
+      <div class="hero__container">
+        <div class="hero__eyebrow">
+          <span class="eyebrow__dot" aria-hidden="true"></span>
+          <span>Agencia de performance digital</span>
+        </div>
+
+        <h1 class="hero__headline">
+          <span class="hero__line"><span>RESULTADOS</span></span>
+          <span class="hero__line hero__line--mobile-combo"><span class="hero__accent-text">QUE SE</span> <span>MIDEN.</span></span>
+        </h1>
+
+        <img src="assets/images/lemon/funnel-limon.png"
+             alt="Funnel Método Eureka" class="hero-funnel"
+             loading="eager" fetchpriority="high" />
+
+        <div class="hero__bottom">
+          <p class="hero__tagline">
+            De ruido a claridad:<br /><span>Convirtiendo intención en ventas reales</span>
+          </p>
+          <div class="hero__cta">
+            <a href="#contacto" class="btn-primary">
+              <span>Medir mis resultados</span>
+              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#servicios" class="btn-ghost">Ver servicios</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <div class="scroll-hint__line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         SERVICIOS
+    ===================================================== -->
+    <section id="servicios" class="services section-pad" aria-labelledby="services-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label reveal" data-delay="1">// NUESTROS SERVICIOS</p>
+          <h2 id="services-title" class="section-title reveal" data-delay="2">Todo lo que necesitas<br />para crecer.</h2>
+          <p class="section-desc reveal" data-delay="3">No adivinamos. Usamos herramientas de análisis profundo para optimizar cada campaña. Paid media, CRM, SEO y analítica trabajando juntos para que cada peso invertido genere resultados medibles.</p>
+        </div>
+
+        <div class="services__grid">
+
+          <article class="service-card reveal" data-delay="1">
+            <div class="service-card__img-wrap">
+              <img src="assets/images/services/meta-ads.png"
+                   alt="Meta Ads" loading="lazy" class="service-card__img" />
+            </div>
+            <div class="service-card__body">
+              <span class="service-card__num">01</span>
+              <h3 class="service-card__title">Meta Ads</h3>
+              <p class="service-card__desc">Campañas de performance en Facebook e Instagram orientadas a resultados medibles, no solo alcance.</p>
+              <ul class="service-card__tags">
+                <li data-tooltip="Recuperamos usuarios que visitaron tu sitio pero no compraron. Segunda oportunidad de convertir.">Retargeting</li>
+                <li data-tooltip="Captamos prospectos calificados listos para tu equipo comercial.">Generación de leads</li>
+                <li data-tooltip="Conectamos directo con tu cliente vía WhatsApp o Messenger para cerrar más rápido.">Conversaciones</li>
+                <li data-tooltip="Llevamos visitantes de calidad a tu sitio con intención real de compra.">Tráfico Web</li>
+              </ul>
+            </div>
+            <div class="service-card__glow" aria-hidden="true"></div>
+          </article>
+
+          <article class="service-card reveal" data-delay="2">
+            <div class="service-card__img-wrap">
+              <img src="assets/images/services/google-ads.jpg"
+                   alt="Google Ads" loading="lazy" class="service-card__img" />
+            </div>
+            <div class="service-card__body">
+              <span class="service-card__num">02</span>
+              <h3 class="service-card__title">Google Ads</h3>
+              <p class="service-card__desc">Capturamos intención de compra en Search, Display y PMax para que cada clic se convierta en venta.</p>
+              <ul class="service-card__tags">
+                <li data-tooltip="Campañas de Shopping y Performance Max para vender más en tu tienda en línea.">Ecommerce</li>
+                <li data-tooltip="Aparecemos cuando tu cliente ya está buscando lo que vendes. Intención de compra máxima.">Palabras Clave</li>
+                <li data-tooltip="Dominamos los resultados de búsqueda pagados para que tu marca sea la primera opción.">SEM</li>
+                <li data-tooltip="Impactamos visualmente a tu audiencia mientras navega. Branding y conversión combinados.">Display</li>
+              </ul>
+            </div>
+            <div class="service-card__glow" aria-hidden="true"></div>
+          </article>
+
+          <article class="service-card reveal" data-delay="3">
+            <div class="service-card__img-wrap">
+              <img src="assets/images/services/tiktok-ads.png"
+                   alt="TikTok Ads" loading="lazy" class="service-card__img" />
+            </div>
+            <div class="service-card__body">
+              <span class="service-card__num">03</span>
+              <h3 class="service-card__title">TikTok Ads</h3>
+              <p class="service-card__desc">Contenido nativo que entretiene y convierte. Llegamos a audiencias donde más tiempo pasan.</p>
+              <ul class="service-card__tags">
+                <li data-tooltip="Conectamos tu marca con creadores relevantes para llegar a audiencias que confían en ellos.">Influencer MKT</li>
+                <li data-tooltip="Usamos los formatos y sonidos del momento para que tu contenido no se sienta como publicidad.">Tendencias</li>
+                <li data-tooltip="Mostramos tus productos directamente en el feed con fichas interactivas que llevan al checkout.">Catálogo digital</li>
+                <li data-tooltip="Campañas optimizadas para conversión directa desde TikTok a tu tienda o landing.">Venta en Línea</li>
+              </ul>
+            </div>
+            <div class="service-card__glow" aria-hidden="true"></div>
+          </article>
+
+          <article class="service-card reveal" data-delay="1">
+            <div class="service-card__img-wrap">
+              <img src="assets/images/services/branding.jpg"
+                   alt="Branding" loading="lazy" class="service-card__img" />
+            </div>
+            <div class="service-card__body">
+              <span class="service-card__num">04</span>
+              <h3 class="service-card__title">Branding</h3>
+              <p class="service-card__desc">Construimos marcas que conectan emocionalmente y se posicionan con claridad en la mente del consumidor.</p>
+              <ul class="service-card__tags">
+                <li data-tooltip="Creamos el ADN visual de tu marca: logo, colores, tipografía y tono de comunicación.">Identidad</li>
+                <li data-tooltip="Piezas gráficas que comunican quién eres antes de que digas una sola palabra.">Diseño</li>
+                <li data-tooltip="Definimos cómo quieres que te perciba tu mercado y construimos la estrategia para lograrlo.">Posicionamiento</li>
+              </ul>
+            </div>
+            <div class="service-card__glow" aria-hidden="true"></div>
+          </article>
+
+          <article class="service-card reveal" data-delay="2">
+            <div class="service-card__img-wrap">
+              <img src="assets/images/services/ooh-dooh.jpg"
+                   alt="DOOH" loading="lazy" class="service-card__img" />
+            </div>
+            <div class="service-card__body">
+              <span class="service-card__num">05</span>
+              <h3 class="service-card__title">DOOH</h3>
+              <p class="service-card__desc">Presencia digital en los puntos de mayor tráfico. Tu marca visible donde tu audiencia transita.</p>
+              <ul class="service-card__tags">
+                <li data-tooltip="Anuncios dinámicos en pantallas digitales segmentados por horario, zona y audiencia.">Pantallas digitales</li>
+                <li data-tooltip="Impactamos a tu audiencia correcta en el momento y lugar indicados usando data real.">Segmentación</li>
+              </ul>
+            </div>
+            <div class="service-card__glow" aria-hidden="true"></div>
+          </article>
+
+          <article class="service-card reveal" data-delay="3">
+            <div class="service-card__img-wrap">
+              <img src="assets/images/services/display.jpg"
+                   alt="Display" loading="lazy" class="service-card__img" />
+            </div>
+            <div class="service-card__body">
+              <span class="service-card__num">06</span>
+              <h3 class="service-card__title">Display</h3>
+              <p class="service-card__desc">Anuncios visuales de alto impacto en los sitios y plataformas donde tu audiencia consume contenido.</p>
+              <ul class="service-card__tags">
+                <li data-tooltip="Formatos interactivos con animaciones, video y gamification que capturan atención real.">Rich Media</li>
+                <li data-tooltip="Tu marca en pantallas de streaming premium con Viewability 100% y VTR del 87%.">Connect TV</li>
+                <li data-tooltip="Banners estratégicos en los sitios donde tu audiencia consume contenido todos los días.">Sitios Web</li>
+              </ul>
+            </div>
+            <div class="service-card__glow" aria-hidden="true"></div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         RESULTADOS
+    ===================================================== -->
+    <section id="resultados" class="metrics section-pad" aria-labelledby="metrics-title">
+      <div class="metrics__bg" aria-hidden="true"></div>
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label reveal" data-delay="1">// RESULTADOS</p>
+          <h2 id="metrics-title" class="section-title reveal" data-delay="2">Los números<br />hablan solos.</h2>
+        </div>
+
+        <div class="metrics__grid">
+          <div class="metric-item reveal" data-delay="1">
+            <div class="metric-item__value">
+              <span class="metric-num" data-count="100">0</span><span class="metric-suffix">%</span>
+            </div>
+            <p class="metric-item__label">Viewability</p>
+            <p class="metric-item__desc">Garantizamos que tus anuncios sean realmente vistos.</p>
+          </div>
+          <div class="metric-item reveal" data-delay="2">
+            <div class="metric-item__value">
+              <span class="metric-num" data-count="98">0</span><span class="metric-suffix">%</span>
+            </div>
+            <p class="metric-item__label">Contactabilidad</p>
+            <p class="metric-item__desc">Seguimiento efectivo para convertir interés en conversaciones reales.</p>
+          </div>
+          <button class="metric-item metric-item--action reveal" type="button" data-eureka-open data-delay="3" aria-haspopup="dialog" aria-controls="eureka-modal">
+            <div class="metric-item__value">
+              <span class="metric-num" data-count="9.87" data-decimals="2">0</span><span class="metric-suffix">%</span>
+            </div>
+            <p class="metric-item__label">Conversión Método Eureka</p>
+            <p class="metric-item__desc">Conversión validada de leads a shows.</p>
+            <span class="metric-item__hint">Ver método</span>
+          </button>
+          <div class="metric-item reveal" data-delay="4">
+            <div class="metric-item__value">
+              <span class="metric-num" data-count="3">0</span><span class="metric-suffix">x</span>
+            </div>
+            <p class="metric-item__label">ROAS Promedio</p>
+            <p class="metric-item__desc">Retorno sobre inversión publicitaria consistente.</p>
+          </div>
+        </div>
+
+        <div class="clients-strip reveal">
+          <p class="clients-strip__label">Marcas que confían en nosotros</p>
+          <div class="clients-strip__logos" aria-label="Marcas que confían en nosotros">
+            <img src="assets/images/clients/gobierno-cdmx.png"
+                 alt="Gobierno de la Ciudad de México" loading="lazy" class="client-logo-img" />
+            <img src="assets/images/clients/interceramic.png"
+                 alt="Interceramic" loading="lazy" class="client-logo-img" />
+            <img src="assets/images/clients/chata.png"
+                 alt="Chata" loading="lazy" class="client-logo-img" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         PROCESO
+    ===================================================== -->
+    <section id="proceso" class="process section-pad" aria-labelledby="process-title">
+      <img src="assets/images/lemon/img-lemon-2.png"
+           srcset="assets/images/lemon/img-lemon-2-mobile.png 560w, assets/images/lemon/img-lemon-2.png 1080w"
+           sizes="(max-width: 767px) 420px, 38vw"
+           alt="" class="process__lemon" aria-hidden="true" loading="lazy" />
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label reveal" data-delay="1">// PROCESO</p>
+          <h2 id="process-title" class="section-title reveal" data-delay="2">Cómo lo hacemos.</h2>
+          <p class="section-desc reveal" data-delay="3">Metodología probada que convierte datos en decisiones y decisiones en resultados.</p>
+        </div>
+
+        <div class="process__steps">
+          <div class="process-step reveal">
+            <div class="process-step__num">01</div>
+            <div class="process-step__body">
+              <h3 class="process-step__title">Investigación &amp; Estrategia</h3>
+              <p class="process-step__desc">Analizamos tu mercado, audiencia y competencia. Definimos objetivos claros y KPIs medibles desde el día uno.</p>
+              <ul class="process-step__tags">
+                <li data-tooltip="Analizamos tu industria, competidores y audiencia para encontrar oportunidades reales de crecimiento.">Market Research</li>
+                <li data-tooltip="Diseñamos el recorrido ideal del usuario para que cada interacción con tu marca sea intuitiva y lleve a la conversión.">UX Strategy</li>
+                <li data-tooltip="Definimos el camino más eficiente para escalar tu negocio con los recursos disponibles.">Growth Strategy</li>
+              </ul>
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <div class="process-step__num">02</div>
+            <div class="process-step__body">
+              <h3 class="process-step__title">Diseño &amp; Identidad</h3>
+              <p class="process-step__desc">Creamos la identidad visual y experiencia de usuario que conecta con tu audiencia y refuerza tu posicionamiento.</p>
+              <ul class="process-step__tags">
+                <li data-tooltip="La estrategia detrás de tu marca: qué dice, a quién le habla y cómo se diferencia.">Brand Strategy</li>
+                <li data-tooltip="Tu logo es la primera impresión. Lo diseñamos para que sea memorable, versátil y represente quiénes son.">Logo Design</li>
+                <li data-tooltip="Sistema completo de colores, tipografías y elementos gráficos que dan coherencia a toda tu comunicación.">Visual Identity</li>
+                <li data-tooltip="El manual que garantiza que tu marca se vea igual en todos los canales y materiales.">Brand Guidelines</li>
+              </ul>
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <div class="process-step__num">03</div>
+            <div class="process-step__body">
+              <h3 class="process-step__title">Desarrollo &amp; Tecnología</h3>
+              <p class="process-step__desc">Construimos la infraestructura digital que soporta y potencia tus campañas. Responsive, rápido y optimizado.</p>
+              <ul class="process-step__tags">
+                <li data-tooltip="Tu sitio funciona perfecto en cualquier dispositivo: desktop, tablet o celular.">Responsive Design</li>
+                <li data-tooltip="Desarrollo web enfocado en velocidad, conversión y experiencia de usuario.">Website Development</li>
+                <li data-tooltip="Interfaces que se ven bien y funcionan mejor. Cada elemento tiene un propósito.">UI/UX Design</li>
+                <li data-tooltip="Tu equipo puede actualizar el contenido sin depender de un desarrollador.">CMS Integration</li>
+              </ul>
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <div class="process-step__num">04</div>
+            <div class="process-step__body">
+              <h3 class="process-step__title">Activación &amp; Optimización</h3>
+              <p class="process-step__desc">Lanzamos campañas, medimos en tiempo real y optimizamos continuamente para maximizar el retorno sobre inversión.</p>
+              <ul class="process-step__tags">
+                <li data-tooltip="Activamos tus campañas con la configuración correcta desde el día uno para evitar desperdiciar presupuesto.">Campaign Launch</li>
+                <li data-tooltip="Probamos versiones de creativos, audiencias y landing pages para quedarnos con lo que convierte más.">A/B Testing</li>
+                <li data-tooltip="Monitoreo constante de métricas clave para tomar decisiones basadas en datos, no en suposiciones.">Real-time Analytics</li>
+                <li data-tooltip="Ajustes continuos de presupuesto, segmentación y creativos para mejorar el rendimiento semana a semana.">Optimization</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CASOS DE ÉXITO
+    ===================================================== -->
+    <section id="casos" class="cases section-pad" aria-labelledby="cases-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label reveal" data-delay="1">// CASOS DE ÉXITO</p>
+          <h2 id="cases-title" class="section-title reveal" data-delay="2">Marcas que confían<br />en nuestros resultados.</h2>
+        </div>
+
+        <div class="cases__grid">
+
+          <article class="case-card case-card--featured reveal" data-delay="1">
+            <div class="case-card__media">
+              <img src="assets/images/cases/dspublicidad.png"
+                   alt="DS Publicidad — paid media" loading="lazy" class="case-card__img" />
+            </div>
+            <div class="case-card__body">
+              <span class="case-card__tag">Paid Media</span>
+              <h3 class="case-card__title">DS Publicidad</h3>
+              <p class="case-card__desc">Estrategia de paid media integral que multiplicó el retorno sobre inversión publicitaria.</p>
+            </div>
+          </article>
+
+          <article class="case-card reveal" data-delay="2">
+            <div class="case-card__media">
+              <img src="assets/images/cases/telcel-up.jpg"
+                   alt="Telcel Up — Connected TV" loading="lazy" class="case-card__img" />
+            </div>
+            <div class="case-card__body">
+              <span class="case-card__tag">Connected TV</span>
+              <h3 class="case-card__title">Telcel Up</h3>
+              <p class="case-card__desc">Campaña de Connected TV con viewability del 100% y segmentación premium.</p>
+            </div>
+          </article>
+
+          <article class="case-card reveal" data-delay="1">
+            <div class="case-card__media">
+              <img src="assets/images/cases/gobierno-cdmx.jpg"
+                   alt="Gobierno CDMX" loading="lazy" class="case-card__img" />
+            </div>
+            <div class="case-card__body">
+              <span class="case-card__tag">Branding</span>
+              <h3 class="case-card__title">Gobierno CDMX</h3>
+              <p class="case-card__desc">Campaña de comunicación institucional con alcance masivo y mensajes de alto impacto.</p>
+            </div>
+          </article>
+
+          <article class="case-card case-card--video reveal" data-delay="2">
+            <div class="case-card__media case-card__media--video">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/UAM-GwxUF8w?rel=0&start=1"
+                title="Gobierno CDMX — Predial V2"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="case-card__body">
+              <span class="case-card__tag">Video</span>
+              <h3 class="case-card__title">Gobierno CDMX — Predial V2</h3>
+              <p class="case-card__desc">Pieza audiovisual institucional integrada a la campaña digital de Gobierno CDMX.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         EQUIPO
+    ===================================================== -->
+    <section id="equipo" class="team section-pad" aria-labelledby="team-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label reveal" data-delay="1">// NUESTRO EQUIPO</p>
+          <h2 id="team-title" class="section-title reveal" data-delay="2">Expertos reales.<br />Resultados reales.</h2>
+        </div>
+
+        <div class="team__controls" aria-label="Controles del carrusel de equipo">
+          <button class="team__nav-btn" type="button" id="team-prev" aria-label="Ver integrante anterior">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <button class="team__nav-btn" type="button" id="team-next" aria-label="Ver siguiente integrante">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <div class="team__carousel-wrap">
+        <div class="team__carousel" id="team-carousel" aria-label="Equipo Media Leadmon">
+          <div class="team-card reveal" data-delay="1">
+            <div class="team-card__photo-wrap">
+              <img src="assets/images/team/rafa.jpg" alt="Rafa — CEO" loading="lazy" class="team-card__photo" />
+            </div>
+            <div class="team-card__meta">
+              <p class="team-card__role">CEO</p>
+              <h3 class="team-card__name">Rafa</h3>
+            </div>
+          </div>
+          <div class="team-card reveal" data-delay="2">
+            <div class="team-card__photo-wrap">
+              <img src="assets/images/team/ani.jpg" alt="Ani — Project Manager" loading="lazy" class="team-card__photo" />
+            </div>
+            <div class="team-card__meta">
+              <p class="team-card__role">Project Manager</p>
+              <h3 class="team-card__name">Ani</h3>
+            </div>
+          </div>
+          <div class="team-card reveal" data-delay="3">
+            <div class="team-card__photo-wrap">
+              <img src="assets/images/team/sam.jpg" alt="Sam — Head of Performance" loading="lazy" class="team-card__photo" />
+            </div>
+            <div class="team-card__meta">
+              <p class="team-card__role">Head of Performance</p>
+              <h3 class="team-card__name">Sam</h3>
+            </div>
+          </div>
+          <div class="team-card reveal" data-delay="4">
+            <div class="team-card__photo-wrap">
+              <img src="assets/images/team/juan.jpg" alt="Juan — Performance Trafficker" loading="lazy" class="team-card__photo" />
+            </div>
+            <div class="team-card__meta">
+              <p class="team-card__role">Performance Trafficker</p>
+              <h3 class="team-card__name">Juan</h3>
+            </div>
+          </div>
+          <div class="team-card reveal" data-delay="5">
+            <div class="team-card__photo-wrap">
+              <img src="assets/images/team/lau.jpg" alt="Lau — Performance Trafficker" loading="lazy" class="team-card__photo" />
+            </div>
+            <div class="team-card__meta">
+              <p class="team-card__role">Performance Trafficker</p>
+              <h3 class="team-card__name">Lau</h3>
+            </div>
+          </div>
+          <div class="team-card reveal" data-delay="6">
+            <div class="team-card__photo-wrap">
+              <img src="assets/images/team/ise.jpg" alt="Ise — Sales Manager" loading="lazy" class="team-card__photo" />
+            </div>
+            <div class="team-card__meta">
+              <p class="team-card__role">Sales Manager</p>
+              <h3 class="team-card__name">Ise</h3>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="team__dots" id="team-dots" aria-label="Paginación del equipo">
+          <button type="button" class="team__dot active" aria-label="Ver a Rafa" aria-current="true"></button>
+          <button type="button" class="team__dot" aria-label="Ver a Ani"></button>
+          <button type="button" class="team__dot" aria-label="Ver a Sam"></button>
+          <button type="button" class="team__dot" aria-label="Ver a Juan"></button>
+          <button type="button" class="team__dot" aria-label="Ver a Lau"></button>
+          <button type="button" class="team__dot" aria-label="Ver a Ise"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         TESTIMONIOS
+    ===================================================== -->
+    <section class="testimonials section-pad" aria-labelledby="testimonials-title">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label reveal" data-delay="1">// TESTIMONIOS</p>
+          <h2 id="testimonials-title" class="section-title reveal" data-delay="2">Lo que dicen<br />nuestros clientes.</h2>
+          <div class="rating reveal" data-delay="3" aria-label="Calificación: 4.9 de 5">
+            <span class="rating__star" aria-hidden="true">★</span>
+            <span class="rating__value">4.9 / 5</span>
+          </div>
+        </div>
+
+        <div class="testimonials__outer reveal">
+          <div class="testimonials__slider" id="t-slider">
+
+            <blockquote class="testimonial-card">
+              <div class="testimonial-card__avatar" aria-hidden="true">PV</div>
+              <p class="testimonial-card__text">"Lograron resultados que otras agencias no pudieron en meses. Su método de validación de datos nos dio claridad total sobre nuestras campañas."</p>
+              <footer><cite class="testimonial-card__name">Patricia Vega</cite></footer>
+            </blockquote>
+
+            <blockquote class="testimonial-card">
+              <div class="testimonial-card__avatar" aria-hidden="true">RF</div>
+              <p class="testimonial-card__text">"El Método Eureka nos entregó 9.87% de conversión y 98% de contactabilidad. Los números hablan solos."</p>
+              <footer><cite class="testimonial-card__name">Roberto Fuentes</cite></footer>
+            </blockquote>
+
+            <blockquote class="testimonial-card">
+              <div class="testimonial-card__avatar" aria-hidden="true">AR</div>
+              <p class="testimonial-card__text">"Por primera vez entendemos exactamente qué está generando ventas en nuestro negocio. Reportes claros, resultados reales."</p>
+              <footer><cite class="testimonial-card__name">Alejandra Rios</cite></footer>
+            </blockquote>
+
+            <blockquote class="testimonial-card">
+              <div class="testimonial-card__avatar" aria-hidden="true">CM</div>
+              <p class="testimonial-card__text">"Expandimos nuestra presencia a pantallas digitales y Connected TV con una segmentación que nunca habíamos logrado. Viewability del 100%."</p>
+              <footer><cite class="testimonial-card__name">Carlos Mendoza</cite></footer>
+            </blockquote>
+
+          </div>
+
+          <div class="testimonials__nav">
+            <button class="t-nav-btn" id="t-prev" aria-label="Anterior">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="t-nav-btn" id="t-next" aria-label="Siguiente">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div class="testimonials__dots" id="t-dots" aria-label="Testimonios">
+            <button type="button" class="testimonials__dot active" aria-label="Ver testimonio 1" aria-current="true"></button>
+            <button type="button" class="testimonials__dot" aria-label="Ver testimonio 2" aria-current="false"></button>
+            <button type="button" class="testimonials__dot" aria-label="Ver testimonio 3" aria-current="false"></button>
+            <button type="button" class="testimonials__dot" aria-label="Ver testimonio 4" aria-current="false"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CONTACTO
+    ===================================================== -->
+    <section id="contacto" class="contact section-pad" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact__layout">
+
+          <div class="contact__info">
+            <p class="section-label reveal" data-delay="1">// CONTACTO</p>
+            <h2 id="contact-title" class="contact__headline reveal" data-delay="2">Hablemos.</h2>
+            <p class="contact__sub reveal" data-delay="3">Cuéntanos sobre tu proyecto y te mostraremos cómo convertimos tu inversión en resultados medibles.</p>
+
+            <div class="contact__details reveal" data-delay="4">
+              <a href="tel:5598043531" class="contact__item">
+                <div class="contact__item-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <span>55 98 04 35 31</span>
+              </a>
+              <a href="mailto:limonero@medialeadmon.com" class="contact__item">
+                <div class="contact__item-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <span>limonero@medialeadmon.com</span>
+              </a>
+            </div>
+
+            <div class="contact__social reveal" data-delay="5" aria-label="Redes sociales">
+              <a href="https://facebook.com/media.leadmon"       target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+                <img src="assets/images/social/facebook.svg" alt="" width="20" height="20" loading="lazy" />
+              </a>
+              <a href="https://instagram.com/media.leadmon"      target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                <img src="assets/images/social/instagram.svg" alt="" width="20" height="20" loading="lazy" />
+              </a>
+              <a href="https://tiktok.com/@media.leadmon"        target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok">
+                <img src="assets/images/social/tiktok.svg" alt="" width="20" height="20" loading="lazy" />
+              </a>
+              <a href="https://linkedin.com/company/media-leadmon" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                <img src="assets/images/social/linkedin.svg" alt="" width="20" height="20" loading="lazy" />
+              </a>
+            </div>
+
+            <a href="https://medialeadmon.my.canva.site/media-leadmon-media-kit-2026" target="_blank" rel="noopener noreferrer" class="mediakit-link reveal" data-delay="6">
+              Conoce nuestro Media Kit
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+
+          <div class="contact__form-wrap reveal">
+            <form class="contact-form" id="contact-form" data-email-template="assets/email/email_acuse_media_leadmon.html" data-email-to="limonero@medialeadmon.com" novalidate>
+              <div class="form-group">
+                <label for="f-name"    class="form-label">Nombre <span aria-hidden="true">*</span></label>
+                <input  type="text"  id="f-name"    name="name"    class="form-input" placeholder="Tu nombre"          required />
+              </div>
+              <div class="form-group">
+                <label for="f-email"   class="form-label">Correo electrónico <span aria-hidden="true">*</span></label>
+                <input  type="email" id="f-email"   name="email"   class="form-input" placeholder="tu@correo.com"     required />
+              </div>
+              <div class="form-group">
+                <label for="f-phone" class="form-label">Teléfono o WhatsApp <span aria-hidden="true">*</span></label>
+                <input  type="tel"  id="f-phone" name="phone" class="form-input" placeholder="55 1234 5678" required />
+              </div>
+              <div class="form-group">
+                <label for="f-msg"     class="form-label">Mensaje <span aria-hidden="true">*</span></label>
+                <textarea            id="f-msg"     name="message" class="form-input form-textarea" rows="4" placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
+              </div>
+              <button type="submit" class="btn-primary btn-primary--full">
+                <span class="btn-text">Enviar mensaje</span>
+                <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <p class="form-success" id="form-ok"  hidden>¡Mensaje recibido! Te contactaremos pronto.</p>
+              <p class="form-error"   id="form-err" hidden>Algo salió mal. Por favor intenta de nuevo.</p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="assets/images/logo-icon-yellow.png" alt="" class="footer__logo-icon" />
+          <img src="assets/images/logo-wordmark-black.png" alt="Media Leadmon" class="footer__logo-word" />
+          <p class="footer__tagline">— De ruido a claridad.</p>
+        </div>
+        <nav class="footer__nav" aria-label="Pie de página">
+          <a href="#servicios">Servicios</a>
+          <a href="#resultados">Resultados</a>
+          <a href="#casos">Casos de éxito</a>
+          <a href="#equipo">Nuestro equipo</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Media Leadmon. Todos los derechos reservados.</p>
+        <div class="footer__social">
+          <a href="https://facebook.com/media.leadmon"        target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="assets/images/social/facebook.svg"             alt="" width="18" height="18" loading="lazy" class="footer__social-icon" />
+          </a>
+          <a href="https://instagram.com/media.leadmon"       target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="assets/images/social/instagram.svg"            alt="" width="18" height="18" loading="lazy" class="footer__social-icon" />
+          </a>
+          <a href="https://tiktok.com/@media.leadmon"         target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <img src="assets/images/social/tiktok.svg"               alt="" width="18" height="18" loading="lazy" class="footer__social-icon" />
+          </a>
+          <a href="https://linkedin.com/company/media-leadmon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="assets/images/social/linkedin.svg" alt="" width="18" height="18" loading="lazy" class="footer__social-icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="eureka-modal" id="eureka-modal" role="dialog" aria-modal="true" aria-labelledby="eureka-modal-title" aria-hidden="true">
+    <div class="eureka-modal__backdrop" data-eureka-close></div>
+    <div class="eureka-modal__panel" role="document">
+      <button class="eureka-modal__close" type="button" data-eureka-close aria-label="Cerrar Método Eureka">✕</button>
+      <div class="eureka-modal__copy">
+        <p class="section-label">Método Eureka</p>
+        <h2 id="eureka-modal-title" class="eureka-modal__title">9.87% de conversión leads a shows.</h2>
+        <p class="eureka-modal__desc">Con Método Eureka alcanzamos 98% de contactabilidad y una conversión validada de leads a shows.</p>
+      </div>
+      <div class="eureka-modal__visual">
+        <img src="assets/images/lemon/media-kit-ml-gral.png"
+             alt="Método Eureka: datos comprobados, conversión leads a shows y decisión acelerada"
+             class="eureka-modal__image" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

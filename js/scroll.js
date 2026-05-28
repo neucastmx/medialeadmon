@@ -23,13 +23,17 @@
 
       return compactHeight + 10;
     };
-    const scrollToTarget = target => {
+    const getTargetY = target => {
       const targetTop = target.getBoundingClientRect().top + window.scrollY;
+      return Math.max(0, targetTop - getOffset(targetTop));
+    };
+    const scrollToTarget = target => {
       window.scrollTo({
-        top: Math.max(0, targetTop - getOffset(targetTop)),
+        top: getTargetY(target),
         behavior: 'smooth'
       });
     };
+    window.mlScrollToTarget = scrollToTarget;
 
     window.addEventListener('load', () => {
       if (window.location.hash) {

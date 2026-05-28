@@ -5,6 +5,25 @@
 (function () {
   'use strict';
 
+  let scrollLockCount = 0;
+
+  function lockPageScroll() {
+    scrollLockCount += 1;
+    if (scrollLockCount > 1) return;
+
+    document.documentElement.classList.add('modal-lock');
+    document.body.classList.add('modal-lock');
+  }
+
+  function unlockPageScroll() {
+    if (!scrollLockCount) return;
+    scrollLockCount -= 1;
+    if (scrollLockCount > 0) return;
+
+    document.documentElement.classList.remove('modal-lock');
+    document.body.classList.remove('modal-lock');
+  }
+
   /* ---- HEADER scroll ---- */
   function initHeader() {
     const header = document.getElementById('header');
@@ -28,16 +47,20 @@
       toggle.setAttribute('aria-expanded', 'true');
       menu.setAttribute('aria-hidden', 'false');
       menu.removeAttribute('inert');
-      document.body.style.overflow = 'hidden';
+      lockPageScroll();
     }
     function shut() {
+      if (document.activeElement && menu.contains(document.activeElement)) {
+        document.activeElement.blur();
+      }
+      unlockPageScroll();
+      menu.offsetHeight;
       menu.classList.remove('open');
       toggle.classList.remove('open');
       document.body.classList.remove('menu-open');
       toggle.setAttribute('aria-expanded', 'false');
       menu.setAttribute('aria-hidden', 'true');
       menu.setAttribute('inert', '');
-      document.body.style.overflow = '';
     }
 
     toggle.addEventListener('click', () => menu.classList.contains('open') ? shut() : open());
@@ -46,7 +69,18 @@
 
     // Close when any mobile link is clicked
     menu.querySelectorAll('.mobile-menu__link, .mobile-menu__phone').forEach(el => {
-      el.addEventListener('click', shut);
+      el.addEventListener('click', e => {
+        if (!el.classList.contains('mobile-menu__link')) {
+          shut();
+          return;
+        }
+
+        const id = el.getAttribute('href');
+        const target = id ? document.querySelector(id) : null;
+        e.preventDefault();
+        shut();
+        if (target) window.setTimeout(() => window.mlScrollToTarget ? window.mlScrollToTarget(target) : target.scrollIntoView({ behavior: 'smooth' }), 0);
+      });
     });
   }
 
@@ -93,27 +127,34 @@
 
     const closeEls = modal.querySelectorAll('[data-eureka-close]');
     const closeBtn = modal.querySelector('.eureka-modal__close');
-    let modalRaf = 0;
+    let modalTimer = 0;
 
     function open() {
-      window.cancelAnimationFrame(modalRaf);
+      window.clearTimeout(modalTimer);
+      if (modal.classList.contains('open')) return;
       modal.setAttribute('aria-hidden', 'false');
       modal.removeAttribute('inert');
-      document.body.classList.add('modal-open');
-      document.body.style.overflow = 'hidden';
-      modalRaf = window.requestAnimationFrame(() => {
-        modal.classList.add('open');
-        if (closeBtn) closeBtn.focus();
-      });
+      const needsMount = !modal.classList.contains('is-mounted');
+      modal.classList.add('is-mounted');
+      if (needsMount) lockPageScroll();
+      modal.offsetHeight;
+      modal.classList.add('open');
+      if (closeBtn) closeBtn.focus({ preventScroll: true });
     }
 
     function shut() {
-      window.cancelAnimationFrame(modalRaf);
+      window.clearTimeout(modalTimer);
+      if (!modal.classList.contains('is-mounted')) return;
+      if (document.activeElement && modal.contains(document.activeElement)) {
+        document.activeElement.blur();
+      }
       modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      modal.setAttribute('inert', '');
-      document.body.classList.remove('modal-open');
-      document.body.style.overflow = '';
+      modalTimer = window.setTimeout(() => {
+        modal.classList.remove('is-mounted');
+        modal.setAttribute('aria-hidden', 'true');
+        modal.setAttribute('inert', '');
+        unlockPageScroll();
+      }, 460);
     }
 
     openers.forEach(el => el.addEventListener('click', open));
@@ -300,7 +341,7 @@
     let activeTag = null;
     let pinned = false;
     let dialogOpen = false;
-    let dialogRaf = 0;
+    let dialogTimer = 0;
 
     function place(tag) {
       const margin = 12;
@@ -323,7 +364,13 @@
     function open(tag, shouldPin) {
       activeTag = tag;
       pinned = Boolean(shouldPin);
-      tooltip.textContent = tag.dataset.tooltip || '';
+      tooltip.innerHTML = `
+        <p class="tag-tooltip__eyebrow">Detalle</p>
+        <h3 class="tag-tooltip__title"></h3>
+        <p class="tag-tooltip__text"></p>
+      `;
+      tooltip.querySelector('.tag-tooltip__title').textContent = tag.textContent || '';
+      tooltip.querySelector('.tag-tooltip__text').textContent = tag.dataset.tooltip || '';
       tags.forEach(item => item.classList.toggle('is-tooltip-open', item === tag));
       tooltip.classList.add('visible');
       requestAnimationFrame(() => place(tag));
@@ -339,24 +386,31 @@
       dialogText.textContent = tag.dataset.tooltip || '';
       dialog.setAttribute('aria-hidden', 'false');
       dialog.removeAttribute('inert');
-      document.body.style.overflow = 'hidden';
-      window.cancelAnimationFrame(dialogRaf);
-      dialogRaf = window.requestAnimationFrame(() => {
-        dialog.classList.add('visible');
-        if (dialogClose) dialogClose.focus();
-      });
+      window.clearTimeout(dialogTimer);
+      const needsMount = !dialog.classList.contains('is-mounted');
+      dialog.classList.add('is-mounted');
+      if (needsMount) lockPageScroll();
+      dialog.offsetHeight;
+      dialog.classList.add('visible');
+      if (dialogClose) dialogClose.focus({ preventScroll: true });
     }
 
     function closeDialog() {
       if (!dialogOpen) return;
-      window.cancelAnimationFrame(dialogRaf);
+      window.clearTimeout(dialogTimer);
       dialogOpen = false;
       activeTag = null;
+      if (document.activeElement && dialog.contains(document.activeElement)) {
+        document.activeElement.blur();
+      }
       dialog.classList.remove('visible');
-      dialog.setAttribute('aria-hidden', 'true');
-      dialog.setAttribute('inert', '');
-      tags.forEach(tag => tag.classList.remove('is-tooltip-open'));
-      document.body.style.overflow = '';
+      dialogTimer = window.setTimeout(() => {
+        dialog.classList.remove('is-mounted');
+        dialog.setAttribute('aria-hidden', 'true');
+        dialog.setAttribute('inert', '');
+        tags.forEach(tag => tag.classList.remove('is-tooltip-open'));
+        unlockPageScroll();
+      }, 360);
     }
 
     const closeAll = except => {
@@ -377,6 +431,9 @@
       tag.setAttribute('aria-label', `${tag.textContent}: ${tag.dataset.tooltip || ''}`);
       tag.addEventListener('mouseenter', () => {
         if (!prefersDialog.matches && !pinned) open(tag, false);
+      });
+      tag.addEventListener('mouseover', () => {
+        if (!prefersDialog.matches && !pinned && activeTag !== tag) open(tag, false);
       });
       tag.addEventListener('mouseleave', () => {
         if (!prefersDialog.matches && !pinned) closeAll();

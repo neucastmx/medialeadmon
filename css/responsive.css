@@ -135,7 +135,9 @@ body {
 .case-card__media--video { height:auto; aspect-ratio:16 / 9; }
 .process__lemon { right:-260px; top:7rem; width:420px; opacity:.08; }
 .eureka-modal__panel {
-  grid-template-columns:1fr; gap:1.25rem; max-height:88vh; overflow:auto;
+  grid-template-columns:1fr; gap:1.25rem; max-height:calc(100dvh - 2.5rem); overflow:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
 }
 .eureka-modal__copy { padding-right:3.25rem; }
 .eureka-modal__visual img { width:min(680px,100%); max-height:none; }

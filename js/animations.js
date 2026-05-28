@@ -191,10 +191,12 @@
     function update() {
       let current = sections[0] ? sections[0].id : '';
       const marker = window.scrollY + window.innerHeight * 0.38;
+      const pageEnd = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
 
       sections.forEach(s => {
         if (marker >= s.offsetTop) current = s.id;
       });
+      if (pageEnd && sections.length) current = sections[sections.length - 1].id;
 
       links.forEach(l => {
         const isActive = l.getAttribute('href') === '#' + current;

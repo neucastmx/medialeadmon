@@ -98,7 +98,7 @@
     </nav>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true">
+    <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true" inert>
       <button class="mobile-menu__close" id="mobile-close" aria-label="Cerrar menú">✕</button>
       <ul class="mobile-menu__links" role="list">
         <li><a href="#inicio"     class="mobile-menu__link">Inicio</a></li>
@@ -269,6 +269,7 @@
               <h3 class="service-card__title">DOOH</h3>
               <p class="service-card__desc">Presencia digital en los puntos de mayor tráfico. Tu marca visible donde tu audiencia transita.</p>
               <ul class="service-card__tags">
+                <li data-tooltip="Espectaculares, vallas y mobiliario urbano en las ubicaciones de mayor impacto de tu ciudad.">Publicidad exterior</li>
                 <li data-tooltip="Anuncios dinámicos en pantallas digitales segmentados por horario, zona y audiencia.">Pantallas digitales</li>
                 <li data-tooltip="Impactamos a tu audiencia correcta en el momento y lugar indicados usando data real.">Segmentación</li>
               </ul>
@@ -769,7 +770,7 @@
     </div>
   </footer>
 
-  <div class="eureka-modal" id="eureka-modal" role="dialog" aria-modal="true" aria-labelledby="eureka-modal-title" aria-hidden="true">
+  <div class="eureka-modal" id="eureka-modal" role="dialog" aria-modal="true" aria-labelledby="eureka-modal-title" aria-hidden="true" inert>
     <div class="eureka-modal__backdrop" data-eureka-close></div>
     <div class="eureka-modal__panel" role="document">
       <button class="eureka-modal__close" type="button" data-eureka-close aria-label="Cerrar Método Eureka">✕</button>
@@ -781,7 +782,7 @@
       <div class="eureka-modal__visual">
         <img src="assets/images/lemon/media-kit-ml-gral.png"
              alt="Método Eureka: datos comprobados, conversión leads a shows y decisión acelerada"
-             class="eureka-modal__image" loading="lazy" />
+             class="eureka-modal__image" loading="eager" decoding="async" />
       </div>
     </div>
   </div>

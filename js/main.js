@@ -26,6 +26,8 @@
       toggle.classList.add('open');
       document.body.classList.add('menu-open');
       toggle.setAttribute('aria-expanded', 'true');
+      menu.setAttribute('aria-hidden', 'false');
+      menu.removeAttribute('inert');
       document.body.style.overflow = 'hidden';
     }
     function shut() {
@@ -33,6 +35,8 @@
       toggle.classList.remove('open');
       document.body.classList.remove('menu-open');
       toggle.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      menu.setAttribute('inert', '');
       document.body.style.overflow = '';
     }
 
@@ -89,18 +93,25 @@
 
     const closeEls = modal.querySelectorAll('[data-eureka-close]');
     const closeBtn = modal.querySelector('.eureka-modal__close');
+    let modalRaf = 0;
 
     function open() {
-      modal.classList.add('open');
+      window.cancelAnimationFrame(modalRaf);
       modal.setAttribute('aria-hidden', 'false');
+      modal.removeAttribute('inert');
       document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
-      if (closeBtn) closeBtn.focus();
+      modalRaf = window.requestAnimationFrame(() => {
+        modal.classList.add('open');
+        if (closeBtn) closeBtn.focus();
+      });
     }
 
     function shut() {
+      window.cancelAnimationFrame(modalRaf);
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
+      modal.setAttribute('inert', '');
       document.body.classList.remove('modal-open');
       document.body.style.overflow = '';
     }
@@ -259,14 +270,37 @@
   function initTagTooltips() {
     const tags = document.querySelectorAll('[data-tooltip]');
     if (!tags.length) return;
+    const prefersDialog = window.matchMedia('(hover: none), (pointer: coarse)');
     const tooltip = document.createElement('div');
     tooltip.className = 'tag-tooltip';
     tooltip.id = 'tag-tooltip';
     tooltip.setAttribute('role', 'tooltip');
     document.body.appendChild(tooltip);
 
+    const dialog = document.createElement('div');
+    dialog.className = 'tag-dialog';
+    dialog.setAttribute('role', 'dialog');
+    dialog.setAttribute('aria-modal', 'true');
+    dialog.setAttribute('aria-hidden', 'true');
+    dialog.setAttribute('inert', '');
+    dialog.innerHTML = `
+      <div class="tag-dialog__backdrop" data-tag-close></div>
+      <div class="tag-dialog__panel" role="document">
+        <button class="tag-dialog__close" type="button" aria-label="Cerrar informacion" data-tag-close>&times;</button>
+        <p class="tag-dialog__eyebrow">Detalle</p>
+        <h3 class="tag-dialog__title"></h3>
+        <p class="tag-dialog__text"></p>
+      </div>
+    `;
+    document.body.appendChild(dialog);
+    const dialogTitle = dialog.querySelector('.tag-dialog__title');
+    const dialogText = dialog.querySelector('.tag-dialog__text');
+    const dialogClose = dialog.querySelector('.tag-dialog__close');
+
     let activeTag = null;
     let pinned = false;
+    let dialogOpen = false;
+    let dialogRaf = 0;
 
     function place(tag) {
       const margin = 12;
@@ -295,7 +329,38 @@
       requestAnimationFrame(() => place(tag));
     }
 
+    function openDialog(tag) {
+      activeTag = tag;
+      dialogOpen = true;
+      pinned = false;
+      tooltip.classList.remove('visible');
+      tags.forEach(item => item.classList.toggle('is-tooltip-open', item === tag));
+      dialogTitle.textContent = tag.textContent || '';
+      dialogText.textContent = tag.dataset.tooltip || '';
+      dialog.setAttribute('aria-hidden', 'false');
+      dialog.removeAttribute('inert');
+      document.body.style.overflow = 'hidden';
+      window.cancelAnimationFrame(dialogRaf);
+      dialogRaf = window.requestAnimationFrame(() => {
+        dialog.classList.add('visible');
+        if (dialogClose) dialogClose.focus();
+      });
+    }
+
+    function closeDialog() {
+      if (!dialogOpen) return;
+      window.cancelAnimationFrame(dialogRaf);
+      dialogOpen = false;
+      activeTag = null;
+      dialog.classList.remove('visible');
+      dialog.setAttribute('aria-hidden', 'true');
+      dialog.setAttribute('inert', '');
+      tags.forEach(tag => tag.classList.remove('is-tooltip-open'));
+      document.body.style.overflow = '';
+    }
+
     const closeAll = except => {
+      closeDialog();
       if (except && pinned) return;
       activeTag = null;
       pinned = false;
@@ -308,20 +373,26 @@
     tags.forEach(tag => {
       tag.setAttribute('tabindex', '0');
       tag.setAttribute('aria-describedby', 'tag-tooltip');
+      tag.setAttribute('role', 'button');
+      tag.setAttribute('aria-label', `${tag.textContent}: ${tag.dataset.tooltip || ''}`);
       tag.addEventListener('mouseenter', () => {
-        if (!pinned) open(tag, false);
+        if (!prefersDialog.matches && !pinned) open(tag, false);
       });
       tag.addEventListener('mouseleave', () => {
-        if (!pinned) closeAll();
+        if (!prefersDialog.matches && !pinned) closeAll();
       });
       tag.addEventListener('focus', () => {
-        if (!pinned) open(tag, false);
+        if (!prefersDialog.matches && !pinned) open(tag, false);
       });
       tag.addEventListener('blur', () => {
-        if (!pinned) closeAll();
+        if (!prefersDialog.matches && !pinned) closeAll();
       });
       tag.addEventListener('click', e => {
         e.stopPropagation();
+        if (prefersDialog.matches) {
+          openDialog(tag);
+          return;
+        }
         const willOpen = activeTag !== tag || !pinned;
         if (willOpen) open(tag, true);
         else closeAll();
@@ -335,8 +406,14 @@
       });
     });
 
+    dialog.querySelectorAll('[data-tag-close]').forEach(el => el.addEventListener('click', closeDialog));
     document.addEventListener('click', () => closeAll());
-    window.addEventListener('scroll', () => closeAll(), { passive: true });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeAll();
+    });
+    window.addEventListener('scroll', () => {
+      if (!dialogOpen) closeAll();
+    }, { passive: true });
     window.addEventListener('resize', () => {
       if (activeTag) place(activeTag);
     }, { passive: true });

@@ -8,11 +8,37 @@
 
   function init() {
     const header = document.getElementById('header');
-    const getOffset = () => (header ? Math.ceil(header.getBoundingClientRect().height) : 0);
-    const scrollToTarget = (target, behavior) => {
-      const top = target.getBoundingClientRect().top + window.scrollY - getOffset();
-      window.scrollTo({ top: Math.max(0, top), behavior });
+    const getOffset = targetTop => {
+      if (!header || targetTop <= 0) return 0;
+
+      const wasScrolled = header.classList.contains('scrolled');
+      const previousTransition = header.style.transition;
+      header.style.transition = 'none';
+      header.classList.add('scrolled');
+      header.offsetHeight;
+      const compactHeight = Math.ceil(header.getBoundingClientRect().height);
+      header.classList.toggle('scrolled', wasScrolled);
+      header.offsetHeight;
+      header.style.transition = previousTransition;
+
+      return compactHeight + 10;
     };
+    const scrollToTarget = target => {
+      const targetTop = target.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: Math.max(0, targetTop - getOffset(targetTop)),
+        behavior: 'smooth'
+      });
+    };
+
+    window.addEventListener('load', () => {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          window.setTimeout(() => scrollToTarget(target), 0);
+        }
+      }
+    }, { once: true });
 
     // Anchor link smooth scroll (native)
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -22,11 +48,7 @@
         const target = document.querySelector(id);
         if (!target) return;
         e.preventDefault();
-        scrollToTarget(target, 'smooth');
-
-        // Re-align after first-load layout shifts from lazy media and font rendering.
-        window.setTimeout(() => scrollToTarget(target, 'auto'), 380);
-        window.setTimeout(() => scrollToTarget(target, 'auto'), 900);
+        scrollToTarget(target);
       });
     });
   }

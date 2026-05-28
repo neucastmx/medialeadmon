@@ -1,29 +1,130 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#000000" />
+
+  <!-- Favicons -->
   <link rel="icon" href="assets/images/favicon.png" type="image/png" sizes="32x32" />
-  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="assets/images/favicon.png" />
 
-  <!-- SEO -->
-  <title>Media Leadmon — Resultados que se miden</title>
-  <meta name="description" content="Agencia de performance digital. De ruido a claridad: convertimos intención en ventas reales con Meta Ads, Google Ads, TikTok, Branding, DOOH y Display." />
+  <!-- ═══════════════════════════════════════════════════
+       SEO PRIMARIO
+       Sustituir YOUR_DOMAIN por el dominio de producción
+       Ejemplo: https://medialeadmon.com
+  ═══════════════════════════════════════════════════ -->
+  <title>Media Leadmon | Agencia de Performance Digital en México</title>
+  <meta name="description" content="Agencia de marketing de performance en México. Meta Ads, Google Ads, TikTok Ads, Branding, DOOH y Display. Convertimos inversión en resultados medibles desde el día uno." />
+  <meta name="keywords"    content="agencia de marketing digital, performance marketing México, Meta Ads, Google Ads, TikTok Ads, branding, DOOH, publicidad digital CDMX" />
+  <meta name="author"      content="Media Leadmon" />
+  <meta name="robots"      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical"    href="https://YOUR_DOMAIN/" />
+  <link rel="sitemap"      type="application/xml" href="https://YOUR_DOMAIN/sitemap.xml" />
 
-  <!-- Open Graph -->
+  <!-- ═══════════════════════════════════════════════════
+       OPEN GRAPH (Facebook, LinkedIn, WhatsApp)
+  ═══════════════════════════════════════════════════ -->
   <meta property="og:type"        content="website" />
-  <meta property="og:title"       content="Media Leadmon — Resultados que se miden" />
-  <meta property="og:description" content="Agencia de performance digital. Convertimos intención en ventas reales." />
-  <meta property="og:image"       content="assets/images/og-image.png" />
-  <meta property="og:image:secure_url" content="assets/images/og-image.png" />
+  <meta property="og:site_name"   content="Media Leadmon" />
+  <meta property="og:locale"      content="es_MX" />
+  <meta property="og:url"         content="https://YOUR_DOMAIN/" />
+  <meta property="og:title"       content="Media Leadmon | Agencia de Performance Digital en México" />
+  <meta property="og:description" content="Agencia de marketing de performance en México. Meta Ads, Google Ads, TikTok Ads, Branding, DOOH y Display. Resultados medibles desde el día uno." />
+  <meta property="og:image"       content="https://YOUR_DOMAIN/assets/images/og-image.png" />
+  <meta property="og:image:secure_url" content="https://YOUR_DOMAIN/assets/images/og-image.png" />
   <meta property="og:image:type"  content="image/png" />
-  <meta property="og:image:width" content="980" />
-  <meta property="og:image:height" content="980" />
-  <meta property="og:image:alt"   content="Media Leadmon" />
-  <meta name="twitter:card"       content="summary_large_image" />
-  <meta name="twitter:image"      content="assets/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"   content="Media Leadmon — Agencia de Performance Digital" />
+
+  <!-- ═══════════════════════════════════════════════════
+       TWITTER / X CARD
+  ═══════════════════════════════════════════════════ -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@medialeadmon" />
+  <meta name="twitter:title"       content="Media Leadmon | Agencia de Performance Digital en México" />
+  <meta name="twitter:description" content="Meta Ads, Google Ads, TikTok Ads, Branding, DOOH y Display. Convertimos inversión en resultados medibles." />
+  <meta name="twitter:image"       content="https://YOUR_DOMAIN/assets/images/og-image.png" />
+
+  <!-- ═══════════════════════════════════════════════════
+       SCHEMA.ORG — JSON-LD
+       Rich results en Google: agencia, servicios, contacto
+  ═══════════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MarketingAgency",
+        "@id": "https://YOUR_DOMAIN/#organization",
+        "name": "Media Leadmon",
+        "url": "https://YOUR_DOMAIN/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://YOUR_DOMAIN/assets/images/logo-icon-yellow.png",
+          "width": 200,
+          "height": 200
+        },
+        "image": "https://YOUR_DOMAIN/assets/images/og-image.png",
+        "description": "Agencia de marketing de performance digital en México. Especialistas en Meta Ads, Google Ads, TikTok Ads, Branding, DOOH y Display.",
+        "telephone": "+52-55-9804-3531",
+        "email": "limonero@medialeadmon.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ciudad de México",
+          "addressRegion": "CDMX",
+          "addressCountry": "MX"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "México"
+        },
+        "sameAs": [
+          "https://facebook.com/media.leadmon",
+          "https://instagram.com/media.leadmon",
+          "https://tiktok.com/@media.leadmon",
+          "https://linkedin.com/company/media-leadmon"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicios de marketing digital",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meta Ads", "description": "Campañas de performance en Facebook e Instagram orientadas a resultados medibles." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Ads", "description": "Search, Display y Shopping con optimización continua de ROI." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "TikTok Ads", "description": "Campañas de alcance y conversión en TikTok para audiencias jóvenes y masivas." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding", "description": "Identidad visual y posicionamiento de marca con enfoque estratégico." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DOOH", "description": "Publicidad exterior digital programática con segmentación y medición en tiempo real." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Display", "description": "Campañas de display programático con viewability del 100% y segmentación premium." } }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://YOUR_DOMAIN/#website",
+        "url": "https://YOUR_DOMAIN/",
+        "name": "Media Leadmon",
+        "description": "Agencia de performance digital en México",
+        "publisher": { "@id": "https://YOUR_DOMAIN/#organization" },
+        "inLanguage": "es-MX"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://YOUR_DOMAIN/#webpage",
+        "url": "https://YOUR_DOMAIN/",
+        "name": "Media Leadmon | Agencia de Performance Digital en México",
+        "isPartOf": { "@id": "https://YOUR_DOMAIN/#website" },
+        "about": { "@id": "https://YOUR_DOMAIN/#organization" },
+        "description": "Agencia de marketing de performance digital en México. Meta Ads, Google Ads, TikTok Ads, Branding, DOOH y Display.",
+        "inLanguage": "es-MX",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://YOUR_DOMAIN/" }]
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- Bootstrap 5 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />

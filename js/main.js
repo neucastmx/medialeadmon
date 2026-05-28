@@ -259,8 +259,47 @@
   function initTagTooltips() {
     const tags = document.querySelectorAll('[data-tooltip]');
     if (!tags.length) return;
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tag-tooltip';
+    tooltip.id = 'tag-tooltip';
+    tooltip.setAttribute('role', 'tooltip');
+    document.body.appendChild(tooltip);
+
+    let activeTag = null;
+    let pinned = false;
+
+    function place(tag) {
+      const margin = 12;
+      const tagRect = tag.getBoundingClientRect();
+      const tipRect = tooltip.getBoundingClientRect();
+      const availableTop = tagRect.top;
+      const top = availableTop > tipRect.height + margin * 2
+        ? tagRect.top - tipRect.height - 10
+        : tagRect.bottom + 10;
+      const preferredLeft = tagRect.left + (tagRect.width / 2) - (tipRect.width / 2);
+      const left = Math.min(
+        Math.max(margin, preferredLeft),
+        window.innerWidth - tipRect.width - margin
+      );
+
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${Math.max(margin, top)}px`;
+    }
+
+    function open(tag, shouldPin) {
+      activeTag = tag;
+      pinned = Boolean(shouldPin);
+      tooltip.textContent = tag.dataset.tooltip || '';
+      tags.forEach(item => item.classList.toggle('is-tooltip-open', item === tag));
+      tooltip.classList.add('visible');
+      requestAnimationFrame(() => place(tag));
+    }
 
     const closeAll = except => {
+      if (except && pinned) return;
+      activeTag = null;
+      pinned = false;
+      tooltip.classList.remove('visible');
       tags.forEach(tag => {
         if (tag !== except) tag.classList.remove('is-tooltip-open');
       });
@@ -268,23 +307,39 @@
 
     tags.forEach(tag => {
       tag.setAttribute('tabindex', '0');
+      tag.setAttribute('aria-describedby', 'tag-tooltip');
+      tag.addEventListener('mouseenter', () => {
+        if (!pinned) open(tag, false);
+      });
+      tag.addEventListener('mouseleave', () => {
+        if (!pinned) closeAll();
+      });
+      tag.addEventListener('focus', () => {
+        if (!pinned) open(tag, false);
+      });
+      tag.addEventListener('blur', () => {
+        if (!pinned) closeAll();
+      });
       tag.addEventListener('click', e => {
         e.stopPropagation();
-        const willOpen = !tag.classList.contains('is-tooltip-open');
-        closeAll(tag);
-        tag.classList.toggle('is-tooltip-open', willOpen);
+        const willOpen = activeTag !== tag || !pinned;
+        if (willOpen) open(tag, true);
+        else closeAll();
       });
       tag.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           tag.click();
         }
-        if (e.key === 'Escape') tag.classList.remove('is-tooltip-open');
+        if (e.key === 'Escape') closeAll();
       });
     });
 
     document.addEventListener('click', () => closeAll());
     window.addEventListener('scroll', () => closeAll(), { passive: true });
+    window.addEventListener('resize', () => {
+      if (activeTag) place(activeTag);
+    }, { passive: true });
   }
 
   /* ---- MOBILE SCROLL STATES ---- */

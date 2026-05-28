@@ -33,7 +33,7 @@
   --fs-2xl:  2.25rem;
   --fs-3xl:  3rem;
   --fs-4xl:  4rem;
-  --fs-hero: clamp(3rem, 7.4vw, 7.3rem);
+  --fs-hero: clamp(3rem, 6.4vw, 9.75rem);
 
   --sp-sm:  1rem;
   --sp-md:  1.5rem;
@@ -390,6 +390,12 @@ body.menu-open .whatsapp-float {
   max-width:1400px; margin:0 auto;
   padding: 8rem clamp(2.75rem,6vw,6rem) 4rem;
 }
+.hero__top {
+  max-width:min(820px, 62vw);
+}
+.hero__copy {
+  display:contents;
+}
 .hero__eyebrow {
   display: inline-flex; align-items:center; gap:.75rem; margin-bottom:2.5rem;
 }
@@ -434,7 +440,7 @@ body.menu-open .whatsapp-float {
   margin:0;
 }
 .hero__tagline span {
-  display:inline-block;
+  display:block;
   white-space:nowrap;
 }
 .hero__cta { display:flex; align-items:center; justify-content:flex-start; gap:1rem; flex-shrink:0; }
@@ -683,6 +689,31 @@ body.menu-open .whatsapp-float {
 .process-step__tags li:hover::before,
 .process-step__tags li.is-tooltip-open::before {
   transform:translate(-50%, 0) rotate(45deg);
+}
+.service-card__tags li::after,
+.service-card__tags li::before,
+.process-step__tags li::after,
+.process-step__tags li::before {
+  display:none !important;
+}
+.tag-tooltip {
+  position:fixed; z-index:500;
+  width:min(280px, calc(100vw - 24px));
+  padding:.75rem .85rem;
+  border:1px solid rgba(253,237,12,.28);
+  border-radius: var(--radius-sm);
+  background:rgba(8,8,8,.96);
+  color:var(--clr-white);
+  box-shadow:0 18px 42px rgba(0,0,0,.42);
+  font-size:.74rem; font-weight:500; letter-spacing:0; line-height:1.45;
+  text-transform:none; text-align:left;
+  opacity:0; pointer-events:none;
+  transform:translateY(8px);
+  transition:opacity .18s var(--ease-out), transform .18s var(--ease-out);
+}
+.tag-tooltip.visible {
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* ---- CASES ---- */

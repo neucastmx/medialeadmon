@@ -442,10 +442,19 @@
 
         <div class="cases__grid">
 
-          <article class="case-card case-card--featured reveal" data-delay="1">
+          <article class="case-card case-card--featured reveal" data-delay="1" data-gallery="ds-publicidad">
             <div class="case-card__media">
               <img src="assets/images/cases/dspublicidad.png"
                    alt="DS Publicidad — paid media" loading="lazy" class="case-card__img" />
+              <span class="case-card__gallery-btn" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" aria-hidden="true">
+                  <rect x="0" y="0" width="4.5" height="4.5" rx="1"/>
+                  <rect x="6.5" y="0" width="4.5" height="4.5" rx="1"/>
+                  <rect x="0" y="6.5" width="4.5" height="4.5" rx="1"/>
+                  <rect x="6.5" y="6.5" width="4.5" height="4.5" rx="1"/>
+                </svg>
+                Ver campaña
+              </button>
             </div>
             <div class="case-card__body">
               <span class="case-card__tag">Paid Media</span>
@@ -454,10 +463,19 @@
             </div>
           </article>
 
-          <article class="case-card reveal" data-delay="2">
+          <article class="case-card reveal" data-delay="2" data-gallery="telcel">
             <div class="case-card__media">
               <img src="assets/images/cases/telcel-up.jpg"
                    alt="Telcel Up — Connected TV" loading="lazy" class="case-card__img" />
+              <span class="case-card__gallery-btn" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" aria-hidden="true">
+                  <rect x="0" y="0" width="4.5" height="4.5" rx="1"/>
+                  <rect x="6.5" y="0" width="4.5" height="4.5" rx="1"/>
+                  <rect x="0" y="6.5" width="4.5" height="4.5" rx="1"/>
+                  <rect x="6.5" y="6.5" width="4.5" height="4.5" rx="1"/>
+                </svg>
+                Ver campaña
+              </button>
             </div>
             <div class="case-card__body">
               <span class="case-card__tag">Connected TV</span>
@@ -466,10 +484,19 @@
             </div>
           </article>
 
-          <article class="case-card reveal" data-delay="1">
+          <article class="case-card reveal" data-delay="1" data-gallery="gobierno-cdmx">
             <div class="case-card__media">
               <img src="assets/images/cases/gobierno-cdmx.jpg"
                    alt="Gobierno CDMX" loading="lazy" class="case-card__img" />
+              <span class="case-card__gallery-btn" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" aria-hidden="true">
+                  <rect x="0" y="0" width="4.5" height="4.5" rx="1"/>
+                  <rect x="6.5" y="0" width="4.5" height="4.5" rx="1"/>
+                  <rect x="0" y="6.5" width="4.5" height="4.5" rx="1"/>
+                  <rect x="6.5" y="6.5" width="4.5" height="4.5" rx="1"/>
+                </svg>
+                Ver campaña
+              </button>
             </div>
             <div class="case-card__body">
               <span class="case-card__tag">Branding</span>
@@ -783,6 +810,44 @@
         <img src="assets/images/lemon/media-kit-ml-gral.png"
              alt="Método Eureka: datos comprobados, conversión leads a shows y decisión acelerada"
              class="eureka-modal__image" loading="eager" decoding="async" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Modal -->
+  <div class="gallery-modal" id="gallery-modal" role="dialog" aria-modal="true" aria-label="Galería de campaña" aria-hidden="true" inert>
+    <div class="gallery-modal__backdrop" data-gallery-close></div>
+    <div class="gallery-modal__panel">
+      <button class="gallery-modal__close" type="button" aria-label="Cerrar galería" data-gallery-close>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/>
+        </svg>
+      </button>
+      <div class="gallery-modal__viewer">
+        <button class="gallery-modal__nav gallery-modal__nav--prev" type="button" aria-label="Imagen anterior">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="11 3 5 9 11 15"/>
+          </svg>
+        </button>
+        <div class="gallery-modal__img-wrap">
+          <img class="gallery-modal__img" src="" alt="" />
+        </div>
+        <button class="gallery-modal__nav gallery-modal__nav--next" type="button" aria-label="Imagen siguiente">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="7 3 13 9 7 15"/>
+          </svg>
+        </button>
+      </div>
+      <div class="gallery-modal__footer">
+        <div class="gallery-modal__info">
+          <span class="gallery-modal__eyebrow"></span>
+          <h3 class="gallery-modal__campaign"></h3>
+          <p class="gallery-modal__desc"></p>
+        </div>
+        <div class="gallery-modal__footer-end">
+          <span class="gallery-modal__counter" aria-live="polite"></span>
+          <div class="gallery-modal__dots" aria-hidden="true"></div>
+        </div>
       </div>
     </div>
   </div>

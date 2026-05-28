@@ -583,6 +583,29 @@ body {
   .case-card:hover,
   .team-card:hover { transform: none; }
   .case-card.is-mobile-active { transform:none; }
+  /* (gallery button is always visible globally — no override needed here) */
+}
+
+/* ---- GALLERY MODAL responsive ---- */
+/* Mobile base (< 768px) */
+.gallery-modal__panel { height:min(92vh, 92dvh); }
+.gallery-modal__img-wrap { padding:.6rem 1rem; }
+.gallery-modal__footer { padding:.85rem 1rem 1rem; gap:.6rem; flex-wrap:wrap; }
+.gallery-modal__desc { white-space:normal; text-overflow:unset; overflow:visible; font-size:.76rem; }
+.gallery-modal__nav { display:none; }
+.gallery-modal__counter { display:none; }
+.gallery-modal__dots { display:flex; }
+
+@media (min-width: 768px) {
+  .gallery-modal__panel { height:min(88vh, 88dvh); }
+  .gallery-modal__img-wrap { padding:1.25rem 4rem; }
+  .gallery-modal__footer { padding:1.1rem 1.5rem 1.25rem; gap:1rem; flex-wrap:nowrap; }
+  .gallery-modal__desc { white-space:nowrap; text-overflow:ellipsis; overflow:hidden; font-size:.78rem; }
+  .gallery-modal__nav { display:grid; width:44px; height:44px; }
+  .gallery-modal__nav--prev { left:.75rem; }
+  .gallery-modal__nav--next { right:.75rem; }
+  .gallery-modal__counter { display:block; }
+  .gallery-modal__dots { display:none; }
 }
 
 /* ---- Print ---- */

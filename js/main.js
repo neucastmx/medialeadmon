@@ -476,6 +476,177 @@
     }, { passive: true });
   }
 
+  /* ---- CASE GALLERY ---- */
+  function initCaseGallery() {
+    const modal = document.getElementById('gallery-modal');
+    if (!modal) return;
+
+    const GALLERIES = {
+      'ds-publicidad': {
+        brand:    'DS Publicidad',
+        campaign: 'Paid Media Integral',
+        desc:     'Estrategia de paid media integral que multiplicó el retorno sobre inversión publicitaria.',
+        images: [
+          'assets/images/cases/ds-publicidad/img-1.jpg',
+          'assets/images/cases/ds-publicidad/img-2.jpg',
+          'assets/images/cases/ds-publicidad/img-3.jpg',
+          'assets/images/cases/ds-publicidad/img-4.jpg',
+          'assets/images/cases/ds-publicidad/img-5.jpg',
+          'assets/images/cases/ds-publicidad/img-6.jpg',
+        ]
+      },
+      'telcel': {
+        brand:    'Telcel Up',
+        campaign: 'Connected TV',
+        desc:     'Campaña de Connected TV con viewability del 100% y segmentación premium.',
+        images: [
+          'assets/images/cases/telcel/img-1.jpg',
+          'assets/images/cases/telcel/img-2.jpg',
+          'assets/images/cases/telcel/img-3.jpg',
+          'assets/images/cases/telcel/img-4.jpg',
+          'assets/images/cases/telcel/img-5.jpg',
+          'assets/images/cases/telcel/img-6.jpg',
+        ]
+      },
+      'gobierno-cdmx': {
+        brand:    'Gobierno CDMX',
+        campaign: 'Branding Institucional',
+        desc:     'Campaña de comunicación institucional con alcance masivo y mensajes de alto impacto.',
+        images: [
+          'assets/images/cases/gobierno-cdmx/img-1.jpg',
+        ]
+      }
+    };
+
+    const imgEl      = modal.querySelector('.gallery-modal__img');
+    const counterEl  = modal.querySelector('.gallery-modal__counter');
+    const eyebrowEl  = modal.querySelector('.gallery-modal__eyebrow');
+    const campaignEl = modal.querySelector('.gallery-modal__campaign');
+    const descEl     = modal.querySelector('.gallery-modal__desc');
+    const prevBtn    = modal.querySelector('.gallery-modal__nav--prev');
+    const nextBtn    = modal.querySelector('.gallery-modal__nav--next');
+    const dotsEl     = modal.querySelector('.gallery-modal__dots');
+
+    let current = 0;
+    let gallery = null;
+    let closeTimer = 0;
+    let touchStartX = 0;
+
+    function buildDots(count) {
+      dotsEl.innerHTML = '';
+      for (let i = 0; i < count; i++) {
+        const d = document.createElement('span');
+        d.className = 'gallery-modal__dot' + (i === 0 ? ' active' : '');
+        dotsEl.appendChild(d);
+      }
+    }
+
+    function syncDots(idx) {
+      dotsEl.querySelectorAll('.gallery-modal__dot').forEach((d, i) => {
+        d.classList.toggle('active', i === idx);
+      });
+    }
+
+    function updateSlide(idx, instant) {
+      const len = gallery.images.length;
+      current = ((idx % len) + len) % len;
+      counterEl.textContent = `${current + 1} / ${len}`;
+      syncDots(current);
+
+      if (instant) {
+        imgEl.src = gallery.images[current];
+        imgEl.alt = `${gallery.brand} — imagen ${current + 1}`;
+        return;
+      }
+      imgEl.classList.add('is-switching');
+      window.setTimeout(() => {
+        imgEl.src = gallery.images[current];
+        imgEl.alt = `${gallery.brand} — imagen ${current + 1}`;
+        imgEl.classList.remove('is-switching');
+      }, 180);
+    }
+
+    function openGallery(galleryId) {
+      gallery = GALLERIES[galleryId];
+      if (!gallery) return;
+
+      // Populate footer info
+      eyebrowEl.textContent  = gallery.brand;
+      campaignEl.textContent = gallery.campaign;
+      descEl.textContent     = gallery.desc;
+
+      // Build dots and show/hide nav based on image count
+      const single = gallery.images.length <= 1;
+      prevBtn.hidden = single;
+      nextBtn.hidden = single;
+      buildDots(gallery.images.length);
+
+      // Load first image immediately
+      updateSlide(0, true);
+
+      // Open modal
+      window.clearTimeout(closeTimer);
+      modal.setAttribute('aria-hidden', 'false');
+      modal.removeAttribute('inert');
+      modal.classList.add('is-mounted');
+      lockPageScroll();
+      modal.offsetHeight;
+      modal.classList.add('open');
+      modal.querySelector('.gallery-modal__close').focus({ preventScroll: true });
+    }
+
+    function closeGallery() {
+      window.clearTimeout(closeTimer);
+      if (!modal.classList.contains('is-mounted')) return;
+      if (document.activeElement && modal.contains(document.activeElement)) {
+        document.activeElement.blur();
+      }
+      modal.classList.remove('open');
+      closeTimer = window.setTimeout(() => {
+        modal.classList.remove('is-mounted');
+        modal.setAttribute('aria-hidden', 'true');
+        modal.setAttribute('inert', '');
+        gallery = null;
+        imgEl.src = '';
+        unlockPageScroll();
+      }, 460);
+    }
+
+    // Open triggers
+    document.querySelectorAll('[data-gallery]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        openGallery(btn.dataset.gallery);
+      });
+    });
+
+    // Close triggers
+    modal.querySelectorAll('[data-gallery-close]').forEach(el => {
+      el.addEventListener('click', closeGallery);
+    });
+
+    // Nav
+    prevBtn.addEventListener('click', () => gallery && updateSlide(current - 1));
+    nextBtn.addEventListener('click', () => gallery && updateSlide(current + 1));
+
+    // Keyboard
+    document.addEventListener('keydown', e => {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape')      closeGallery();
+      if (e.key === 'ArrowLeft')   gallery && updateSlide(current - 1);
+      if (e.key === 'ArrowRight')  gallery && updateSlide(current + 1);
+    });
+
+    // Touch swipe on viewer
+    const viewer = modal.querySelector('.gallery-modal__viewer');
+    viewer.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    viewer.addEventListener('touchend', e => {
+      if (!gallery) return;
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 44) updateSlide(diff > 0 ? current + 1 : current - 1);
+    });
+  }
+
   /* ---- MOBILE SCROLL STATES ---- */
   function initMobileScrollStates() {
     if (!window.matchMedia('(hover: none)').matches || !('IntersectionObserver' in window)) return;
@@ -506,6 +677,7 @@
     initForm();
     initCardGlow();
     initTagTooltips();
+    initCaseGallery();
     initMobileScrollStates();
     // Ensure all images get lazy loading
     document.querySelectorAll('img:not([loading])').forEach(img => img.setAttribute('loading', 'lazy'));
